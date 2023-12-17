@@ -120,14 +120,19 @@ function getPasswordOptions() {
     // Prompt and save password options:
     
     // Choose number between 8 and 128 characters and save to global variable
-    let askLength = prompt("How long do you want your password to be? \nEnter a number between 8 and 128.");
+    let askLength = prompt("How long do you want your password to be? \nEnter a number from 8 to 128.");
     
     // Did we get a value
-    if (askLength) {
+    if (askLength === null) {
+      // Cancel button
+      return;
+    } else {
+      // Is it valid
       if ((askLength === NaN) || (askLength < 8) || (askLength > 128)) {
         alert("Please enter a number from 8 to 128.");
         return;
       } else {
+        // Save length to global variable
         passOpts.passLength = parseInt(askLength);
       }
     }
@@ -135,6 +140,16 @@ function getPasswordOptions() {
     console.log(`Password length: ${passOpts.passLength}`);
 
     // Include lowercase          Y/N
+    let askLowercase = confirm("Would you like to include lowercase characters? \nSelect OK for Yes or Cancel for No.");
+
+    if (askLowercase) {
+      passOpts.passCharset.useLower = true;
+    } else {
+      passOpts.passCharset.useLower = false;
+    }
+
+    console.log(`Use Lowercase: ${passOpts.passCharset.useLower}`);
+
     // Include uppercase          Y/N
     // Include numeric            Y/N
     // Include Special characters Y/N
