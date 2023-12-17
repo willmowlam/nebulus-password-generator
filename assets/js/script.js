@@ -206,8 +206,31 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
 
-    // Get password options
-    getPasswordOptions();
+  // Store of all available password characters
+  const passwordCharPool = [];
+
+  // Array of final password characters
+  const passwordArray = []
+
+  // Get password options
+  getPasswordOptions();
+
+  // Populate the Password Character Pool with chosen charactersets
+  if (passOpts.passCharset.useSpecial){
+    passwordCharPool.push(specialCharacters);
+  }
+  if (passOpts.passCharset.useNumeric){
+    passwordCharPool.push(numericCharacters);
+  }
+  if (passOpts.passCharset.useLower){
+    passwordCharPool.push(lowerCasedCharacters);
+  }
+  if (passOpts.passCharset.useUpper){
+    passwordCharPool.push(upperCasedCharacters);
+  }
+
+  console.log(passwordCharPool );
+
     // For every password character, 
       // pick a random number from the available charactersets and add to a password array
     // Save array to password as a string
