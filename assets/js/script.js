@@ -214,7 +214,10 @@ function generatePassword() {
   const passwordCharPool = [];
 
   // Array of final password characters
-  const passwordArray = []
+  const passwordArray = [];
+
+  // The password to return
+  let passwordString = "";
 
   // Get password options
   if (false === getPasswordOptions()){
@@ -243,15 +246,17 @@ function generatePassword() {
 
   console.log(passwordCharPool );
 
-    // For every password character, 
-    for (let i = 0; i < passOpts.passLength; i++) {
-      // pick a random number from the available charactersets and add to a password array
-      passwordArray[i] = getRandom(passwordCharPool);
-    }
+  // For every password character, 
+  for (let i = 0; i < passOpts.passLength; i++) {
+    // pick a random number from the available charactersets and add to a password array
+    passwordArray[i] = getRandom(passwordCharPool);
+  }
 
-    // Save array to password as a string
-    // Return generated password
-  return "";
+  // Save array to password as a string
+  passwordString = passwordArray.join('');
+  
+  // Return generated password
+  return passwordString;
 }
 
 // Get references to the #generate element
