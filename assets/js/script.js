@@ -125,12 +125,12 @@ function getPasswordOptions() {
     // Did we get a value
     if (askLength === null) {
       // Cancel button
-      return;
+      return false;
     } else {
       // Is it valid
       if ((askLength === NaN) || (askLength < 8) || (askLength > 128)) {
         alert("Please enter a number from 8 to 128.");
-        return;
+        return false;
       } else {
         // Save length to global variable
         passOpts.passLength = parseInt(askLength);
@@ -189,7 +189,7 @@ function getPasswordOptions() {
         // Redo selection of password options
         getPasswordOptions();
       } else {
-        return;
+        return false;
       }
 
     }
@@ -213,20 +213,27 @@ function generatePassword() {
   const passwordArray = []
 
   // Get password options
-  getPasswordOptions();
+  if (false === getPasswordOptions()){
+    return "";
+  };
 
   // Populate the Password Character Pool with chosen charactersets
   if (passOpts.passCharset.useSpecial){
-    passwordCharPool.push(specialCharacters);
+    passwordCharPool.push(...specialCharacters);
   }
   if (passOpts.passCharset.useNumeric){
-    passwordCharPool.push(numericCharacters);
+    passwordCharPool.push(...numericCharacters);
   }
   if (passOpts.passCharset.useLower){
-    passwordCharPool.push(lowerCasedCharacters);
+    passwordCharPool.push(...lowerCasedCharacters);
   }
   if (passOpts.passCharset.useUpper){
-    passwordCharPool.push(upperCasedCharacters);
+    passwordCharPool.push(...upperCasedCharacters);
+  }
+
+  if (passwordCharPool.length === 0){
+    alert("There has been an error.");
+    return "";
   }
 
   console.log(passwordCharPool );
