@@ -151,7 +151,27 @@ function getPasswordOptions() {
     console.log(`Use Lowercase: ${passOpts.passCharset.useLower}`);
 
     // Include uppercase          Y/N
+    let askUppercase = confirm("Would you like to include uppercase characters? \nSelect OK for Yes or Cancel for No.");
+
+    if (askUppercase) {
+      passOpts.passCharset.useUpper= true;
+    } else {
+      passOpts.passCharset.useUpper = false;
+    }
+
+    console.log(`Use Uppercase: ${passOpts.passCharset.useUpper}`);
+
     // Include numeric            Y/N
+    let askNumeric = confirm("Would you like to include numeric characters? \nSelect OK for Yes or Cancel for No.");
+
+    if (askUppercase) {
+      passOpts.passCharset.useNumeric= true;
+    } else {
+      passOpts.passCharset.useNumeric = false;
+    }
+
+    console.log(`Use Numeric: ${passOpts.passCharset.useNumeric}`);
+
     // Include Special characters Y/N
       // Check at least one character set has been selected    
   
