@@ -182,9 +182,18 @@ function getPasswordOptions() {
     }
 
     console.log(`Use Special: ${passOpts.passCharset.useSpecial}`);
-    
-      // Check at least one character set has been selected    
-  
+
+    // Check at least one character set has been selected
+    if (!askSpecial && !askLowercase && !askUppercase && !askNumeric) {
+      if (confirm("You haven't selected any charactersets. \nWould you like to select your options again?")) {
+        // Redo selection of password options
+        getPasswordOptions();
+      } else {
+        return;
+      }
+
+    }
+
 }
 
 // Function for getting a random element from an array
