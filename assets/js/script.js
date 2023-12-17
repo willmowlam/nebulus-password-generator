@@ -100,20 +100,45 @@ const upperCasedCharacters = [
 //   * Code should validate for each input and at least one character type should be selected
 //   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
 
-// Globals:
-// Password length
-// Character sets [special, numeric, lower, upper])
+// Password Options
+const passOpts = {
+  passLength: 8,
+  passCharset: {
+    useSpecial: true,
+    useNumeric: true,
+    useLower: true,
+    useUpper: true
+  }
+};
+
+// The Password
+const strPassword = "";
 
 // Function to prompt user for password options
 function getPasswordOptions() {
 
-  // Prompt and save password options:
+    // Prompt and save password options:
+    
     // Choose number between 8 and 128 characters and save to global variable
+    let askLength = prompt("How long do you want your password to be? \nEnter a number between 8 and 128.");
+    
+    // Did we get a value
+    if (askLength) {
+      if ((askLength === NaN) || (askLength < 8) || (askLength > 128)) {
+        alert("Please enter a number from 8 to 128.");
+        return;
+      } else {
+        passOpts.passLength = parseInt(askLength);
+      }
+    }
+
+    console.log(`Password length: ${passOpts.passLength}`);
+
     // Include lowercase          Y/N
     // Include uppercase          Y/N
     // Include numeric            Y/N
     // Include Special characters Y/N
-      // Check at least one character set has been selected 
+      // Check at least one character set has been selected    
   
 }
 
@@ -128,11 +153,12 @@ function getRandom(arr) {
 function generatePassword() {
 
     // Get password options
-    // Join the chosen character sets into a single array
-    // Rearrange the order of password array elements
-    // Trim the array length to the chosen password size
-    // Return generated password as a string
-
+    getPasswordOptions();
+    // For every password character, 
+      // pick a random number from the available charactersets and add to a password array
+    // Save array to password as a string
+    // Return generated password
+  return "";
 }
 
 // Get references to the #generate element
