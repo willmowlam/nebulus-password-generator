@@ -164,7 +164,7 @@ function getPasswordOptions() {
     // Include numeric            Y/N
     let askNumeric = confirm("Would you like to include numeric characters? \nSelect OK for Yes or Cancel for No.");
 
-    if (askUppercase) {
+    if (askNumeric) {
       passOpts.passCharset.useNumeric= true;
     } else {
       passOpts.passCharset.useNumeric = false;
@@ -173,6 +173,16 @@ function getPasswordOptions() {
     console.log(`Use Numeric: ${passOpts.passCharset.useNumeric}`);
 
     // Include Special characters Y/N
+    let askSpecial = confirm("Would you like to include special characters (eg @, %, +)? \nSelect OK for Yes or Cancel for No.");
+
+    if (askSpecial) {
+      passOpts.passCharset.useSpecial= true;
+    } else {
+      passOpts.passCharset.useSpecial = false;
+    }
+
+    console.log(`Use Special: ${passOpts.passCharset.useSpecial}`);
+    
       // Check at least one character set has been selected    
   
 }
