@@ -198,8 +198,12 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+
+  // Get a random number
+  const intRandom = Math.floor(Math.random() * arr.length);
   
-  // Not sure we need this function
+  // Return randomly chosen element from the array
+  return arr[intRandom];
 
 }
 
@@ -231,6 +235,7 @@ function generatePassword() {
     passwordCharPool.push(...upperCasedCharacters);
   }
 
+  // The pool should never be zero here
   if (passwordCharPool.length === 0){
     alert("There has been an error.");
     return "";
@@ -239,7 +244,11 @@ function generatePassword() {
   console.log(passwordCharPool );
 
     // For every password character, 
+    for (let i = 0; i < passOpts.passLength; i++) {
       // pick a random number from the available charactersets and add to a password array
+      passwordArray[i] = getRandom(passwordCharPool);
+    }
+
     // Save array to password as a string
     // Return generated password
   return "";
