@@ -111,16 +111,17 @@ const passOpts = {
   }
 };
 
-// The Password
-const strPassword = "";
+// Min/Max password length settings
+const minPassLength = 8;
+const maxPassLength = 128;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
 
     // Prompt and save password options:
     
-    // Choose number between 8 and 128 characters and save to global variable
-    let askLength = prompt("How long do you want your password to be? \nEnter a number from 8 to 128.");
+    // Choose number between min and max characters and save to global variable
+    let askLength = prompt(`How long do you want your password to be? \nEnter a number from ${minPassLength} to ${maxPassLength}.`);
     
     // Did we get a value
     if (askLength === null) {
@@ -128,8 +129,8 @@ function getPasswordOptions() {
       return false;
     } else {
       // Is it valid
-      if ((askLength === NaN) || (askLength < 8) || (askLength > 128)) {
-        alert("Please enter a number from 8 to 128.");
+      if ((askLength === NaN) || (askLength < minPassLength) || (askLength > maxPassLength)) {
+        alert(`Please enter a number from ${minPassLength} to ${maxPassLength}.`);
         return false;
       } else {
         // Save length to global variable
@@ -193,7 +194,6 @@ function getPasswordOptions() {
       }
 
     }
-
 }
 
 // Function for getting a random element from an array
@@ -204,7 +204,6 @@ function getRandom(arr) {
   
   // Return randomly chosen element from the array
   return arr[intRandom];
-
 }
 
 // Function to generate password with user input
@@ -243,8 +242,6 @@ function generatePassword() {
     alert("There has been an error.");
     return "";
   }
-
-  console.log(passwordCharPool );
 
   // For every password character, 
   for (let i = 0; i < passOpts.passLength; i++) {
