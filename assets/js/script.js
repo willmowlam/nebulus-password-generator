@@ -88,18 +88,6 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-// * Generate a password when the button is clicked
-//   * Present a series of prompts for password criteria
-//     * Length of password
-//       * At least 8 characters but no more than 128.
-//     * Character types
-//       * Lowercase
-//       * Uppercase
-//       * Numeric
-//       * Special characters ($@%&*, etc)
-//   * Code should validate for each input and at least one character type should be selected
-//   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
-
 // Password Options
 const passOpts = {
   passLength: 8,
@@ -129,7 +117,7 @@ function getPasswordOptions() {
       return false;
     } else {
       // Is it valid
-      if ((askLength === NaN) || (askLength < minPassLength) || (askLength > maxPassLength)) {
+      if ((isNaN(askLength)) || (askLength < minPassLength) || (askLength > maxPassLength)) {
         alert(`Please enter a number from ${minPassLength} to ${maxPassLength}.`);
         return false;
       } else {
