@@ -4,7 +4,7 @@ A simple password generator.
 
 Deployed at the following url:
 
-https://willmowlam.github.io/password-generator/
+https://willmowlam.github.io/nebulus-password-generator/
 
 ## Usage
 
