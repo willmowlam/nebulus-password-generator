@@ -1,4 +1,4 @@
-# Password Generator
+# Nebulus Password Generator
 
 A simple password generator.
 
